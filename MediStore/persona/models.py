@@ -3,7 +3,6 @@ from django.db import models
 class Persona(models.Model):
     TIPOS_DOCUMENTO = [
         ('CC', 'Cédula de Ciudadanía'),
-        ('TI', 'Tarjeta de Identidad'),
         ('CE', 'Cédula de Extranjería'),
         ('PA', 'Pasaporte'),
     ]
