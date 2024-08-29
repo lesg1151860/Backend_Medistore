@@ -14,4 +14,4 @@ class Persona(models.Model):
     numero_telefono = models.CharField(max_length=15, blank=True, null=True)
 
     def __str__(self):
-        return self.nombre_completo
+        return f'{self.nombre_completo} ({self.numero_documento})'
