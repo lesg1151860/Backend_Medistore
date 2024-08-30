@@ -1,13 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from MediStore.persona.models import Persona
+
+from persona.models import Persona
+
 
 class UsuarioManager(BaseUserManager):
     def create_user(self, username, numero_documento, password=None):
         if not username:
-            raise ValueError('La persona debe tener un nombre de usuario')
+            raise ValueError('El usuario debe tener un nombre de usuario')
         if not numero_documento:
-            raise ValueError('La persona debe tener un número de documento')
+            raise ValueError('El usuario debe tener un número de documento')
 
         user = self.model(
             username=username,
