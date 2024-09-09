@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'persona',
     'usuario',
     'producto',
+    'lote',
 ]
 
 MIDDLEWARE = [
