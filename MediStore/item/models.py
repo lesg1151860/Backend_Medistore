@@ -1,5 +1,4 @@
 from django.db import models
-from .models import Producto, Lote
 
 class Item(models.Model):
     ESTADO_OPCIONES = [
@@ -10,8 +9,8 @@ class Item(models.Model):
     ]
 
     codigo_barras = models.CharField(max_length=50, primary_key=True)
-    producto_id = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    codigo_lote = models.ForeignKey(Lote, on_delete=models.CASCADE, to_field='codigo')
+    producto_id = models.ForeignKey('producto.Producto', on_delete=models.CASCADE)
+    codigo_lote = models.ForeignKey('lote.Lote', on_delete=models.CASCADE, to_field='codigo')
     estado = models.CharField(max_length=10, choices=ESTADO_OPCIONES, default='disponible')
 
     def __str__(self):
