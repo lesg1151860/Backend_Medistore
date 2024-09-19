@@ -1,11 +1,9 @@
 from django.db import models
-from .models import Factura
-from .models import Lote     
 
 class Venta(models.Model):
     id = models.AutoField(primary_key=True)
-    factura_id = models.ForeignKey(Factura, on_delete=models.CASCADE)
-    item_codigo_barras = models.ForeignKey(Lote, on_delete=models.CASCADE, to_field='codigo_barras')
+    factura_id = models.ForeignKey('factura.Factura', on_delete=models.CASCADE)
+    item_cod_barras = models.ForeignKey('item.Item', on_delete=models.CASCADE, to_field='codigo_barras')
     precio_unitario = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
