@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'producto',
     'lote',
     'item',
+    'factura',
 ]
 
 MIDDLEWARE = [
