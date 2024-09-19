@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 class Lote(models.Model):
-    codigo = models.CharField(primary_key=True, max_length=50)
+    codigo_barras = models.CharField(primary_key=True, max_length=50)
     fecha_ingreso = models.DateField(default=timezone.now)
     fecha_vencimiento = models.DateField()
 
@@ -17,4 +17,4 @@ class Lote(models.Model):
         super(Lote, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.codigo
+        return self.codigo_barras
