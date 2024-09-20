@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Persona
+from .serializer import PersonaSerializer
 
-# Create your views here.
-from django.http import HttpResponse
-
-def index(request):
-    return HttpResponse("Hola gente linda")
+class PersonaListCreateView(generics.ListCreateAPIView):
+    queryset = Persona.objects.all()
+    serializer_class = PersonaSerializer
