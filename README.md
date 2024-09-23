@@ -40,7 +40,7 @@ To access the project you must follow these steps:
 
 ![Step4](https://github.com/user-attachments/assets/fb1ff629-9a6e-40e5-8893-2041e6c990dc)
 
-5. Using the command “.venvScriptsactivate.bat” you perform the activation of your virtual environment. Then install the dependencies of our project using the command “pip install -r requirements.txt”. Here's an example of what it would look like
+5. Using the command “.venv\Scripts\activate.bat” you perform the activation of your virtual environment. Then install the dependencies of our project using the command “pip install -r requirements.txt”. Here's an example of what it would look like
 
 ![Step5](https://github.com/user-attachments/assets/a60ef148-628e-4bbe-a71d-42db89d08c7e)
 
