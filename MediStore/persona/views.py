@@ -47,10 +47,12 @@ class PersonaUpdateView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PersonaDeleteView(APIView):
+
     def delete(self, request, numero_documento):
         try:
             persona = Persona.objects.get(numero_documento=numero_documento)
-            persona.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
         except Persona.DoesNotExist:
-            return Response({'Error': 'Persona no encontrada'}, status=status.HTTP_404_NOT_FOUND)
+            raise NotFound(detail="Persona no encontrada.")
+        
+        persona.delete()
+        return Response({"message": "Persona eliminada correctamente."}, status=status.HTTP_204_NO_CONTENT)
