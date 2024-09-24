@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Persona
 from .serializer import PersonaDeleteSerializer, PersonaSerializer, PersonaUpDateSerializer
 from rest_framework.filters import OrderingFilter
+from rest_framework.exceptions import NotFound
 
 class PersonaListView(generics.ListCreateAPIView):
     queryset = Persona.objects.all()
@@ -29,25 +30,22 @@ class PersonaSearchView(APIView):
         except Persona.DoesNotExist:
             return Response({'Error': 'Persona no encontrada'}, status=status.HTTP_404_NOT_FOUND)
 
-class PersonaUpDateView(APIView):
+class PersonaUpdateView(APIView):
     
     def get_object(self, numero_documento):
         try:
             return Persona.objects.get(numero_documento=numero_documento)
         except Persona.DoesNotExist:
-            return None
+            raise NotFound(detail="Persona no encontrada dentro del sistema.")
 
     def put(self, request, numero_documento):
         persona = self.get_object(numero_documento)
-        if not persona:
-            return Response({"Error": "Persona no encontrada."}, status=status.HTTP_404_NOT_FOUND)
-        
-        serializer = PersonaUpDateSerializer(persona, data=request.data)
+        serializer = PersonaUpDateSerializer(persona, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-  
+
 class PersonaDeleteView(APIView):
     def delete(self, request, numero_documento):
         try:
