@@ -28,3 +28,23 @@ class CreateUsuarioSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])  # Encripta la contraseña
         user.save()
         return user
+    
+class UsuarioUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = ['username', 'rol', 'status']
+        
+class UsuarioDeleteSerializer(serializers.Serializer):
+    numero_documento = serializers.CharField()
+
+    def validate_username(self, value):
+        try:
+            usuario = Usuario.objects.get(username=value)
+        except Usuario.DoesNotExist:
+            raise serializers.ValidationError("Usuario no encontrado")
+        return value
+
+    def delete(self, validated_data):
+        usuario = Usuario.objects.get(username=validated_data['username'])
+        usuario.delete()
+        return usuario
