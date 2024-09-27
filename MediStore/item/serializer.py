@@ -6,6 +6,12 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = '__all__'
         
+    
+    def validate_codigo_barras(self, value):
+        if not value.isdigit():
+            raise serializers.ValidationError("El código de barras debe contener únicamente caracteres numéricos.")
+        return value
+        
     def create(self, validated_data):
         return Item.objects.create(**validated_data)
 
