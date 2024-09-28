@@ -4,6 +4,7 @@ env/
 env32/
 .env/
 .python-version
+.venv/
 #Archivos de Python
 __pycache__/
 *.pyc
@@ -12,3 +13,5 @@ __pycache__/
 *.log
 logs/
 *.sqlite3
+#Folders
+assets/
