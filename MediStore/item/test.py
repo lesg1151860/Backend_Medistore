@@ -24,7 +24,7 @@ class ItemModelTest(TestCase):
             fecha_ingreso = fecha_ingreso,
             fecha_vencimiento=fecha_vencimiento,
         )
-
+        
     def test_crear_item(self):
         item = Item.objects.create(
             codigo_barras='L123',
@@ -71,3 +71,17 @@ class ItemModelTest(TestCase):
         self.assertEqual(item.codigo_lote, self.lote)
         self.assertEqual(item.codigo_lote.codigo_barras, "L123")
         self.assertEqual(Item.objects.get(codigo_barras="1234567890123").codigo_lote, self.lote)
+    
+    def test_change_item_estado(self):
+        item = Item.objects.create(
+            codigo_barras="147852",
+            producto_id=self.producto,
+            codigo_lote=self.lote,
+            estado="disponible",
+        )
+        
+        item.estado = "vendido"
+        item.save()
+        
+        updated_item = Item.objects.get(codigo_barras="147852")
+        self.assertEqual(updated_item.estado, "vendido")
