@@ -1,2 +1,95 @@
-<h1>Bienvenido a MediStore</h1>
-<button onclick="window.location.href='admin/'">Ir a otra vista</button>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediStore - Inicio</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'src/styles.css' %}"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'src/favicon.png' %}"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="{% static 'src/favicon.png' %}" alt="MediStore Logo"/>
+          <h1>MediStore</h1>
+        </div>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <h1>Bienvenido a MediStore</h1>
+        <p>Tu salud es nuestra prioridad</p>
+        <button type="button" onclick="window.location.href='#contacto'">
+          Contáctanos
+        </button>
+      </section>
+
+      <section id="servicios">
+        <h2>Nuestros Servicios</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <img src="{% static 'src/icons/notes-medical.svg' %}" alt="Recetas" />
+            <h3>Recetas Médicas</h3>
+            <p>Surtimos tus recetas con rapidez y precisión.</p>
+          </div>
+          <div class="service-card">
+            <img src="{% static 'src/icons/truck-fast.svg' %}" alt="Entrega" />
+            <h3>Entrega a Domicilio</h3>
+            <p>Llevamos tus medicamentos directamente a tu hogar.</p>
+          </div>
+          <div class="service-card">
+            <img src="{% static 'src/icons/stethoscope.svg' %}" alt="Consulta" />
+            <h3>Consulta Farmacéutica</h3>
+            <p>Resolvemos tus dudas sobre medicamentos.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="productos">
+        <h2>Productos Destacados</h2>
+        <div class="product-grid">
+          <!-- Add your product cards here -->
+        </div>
+      </section>
+
+      <section id="contacto">
+        <h2>Contáctanos</h2>
+        <form>
+          <input type="text" placeholder="Nombre" required />
+          <input type="email" placeholder="Correo Electrónico" required />
+          <textarea placeholder="Mensaje" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 MediStore. Todos los derechos reservados.</p>
+      <button
+        type="button"
+        name="admin"
+        onclick="window.location.href='admin/'"
+      >
+        Iniciar sesión
+      </button>
+    </footer>
+  </body>
+</html>
