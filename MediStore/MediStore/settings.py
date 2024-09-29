@@ -90,25 +90,27 @@ DATABASES = {
     # }
     
     # BASE DE DATOS POSTGRESSQL LOCAL
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "medi_store",
-    #     "USER": "andersond912",
-    #     "PASSWORD": "admin123",
-    #     "HOST": "127.0.0.1",
-    #     "PORT": "5432",
-    # }
-     "default": {
+    "default": {
         "ENGINE": "django.db.backends.postgresql",
-        'NAME': 'verceldb',
-        'USER': 'default',
-        'PASSWORD': 'MC4RwsLqJ1oc',
-        'HOST': 'ep-lingering-waterfall-a46zmsn8-pooler.us-east-1.aws.neon.tech',
-        'PORT': '5432',
-        'OPTIONS': {
-            'sslmode': 'require',
-        },
+        "NAME": "medi_store",
+        "USER": "andersond912",
+        "PASSWORD": "admin123",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
+    
+    # BASE DE DATOS POSTGRESSQL REMOTA
+    #  "default": {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     'NAME': 'verceldb',
+    #     'USER': 'default',
+    #     'PASSWORD': 'MC4RwsLqJ1oc',
+    #     'HOST': 'ep-lingering-waterfall-a46zmsn8-pooler.us-east-1.aws.neon.tech',
+    #     'PORT': '5432',
+    #     'OPTIONS': {
+    #         'sslmode': 'require',
+    #     },
+    # }
 }
 
 
