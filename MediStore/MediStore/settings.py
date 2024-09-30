@@ -83,9 +83,31 @@ WSGI_APPLICATION = 'MediStore.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # BASE DE DATOS SQLITE
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    
+    # BASE DE DATOS POSTGRESSQL LOCAL
+    # "default": {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     "NAME": "medi_store",
+    #     "USER": "andersond912",
+    #     "PASSWORD": "admin123",
+    #     "HOST": "127.0.0.1",
+    #     "PORT": "5432",
+    # }
+     "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'MC4RwsLqJ1oc',
+        'HOST': 'ep-lingering-waterfall-a46zmsn8-pooler.us-east-1.aws.neon.tech',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
 
@@ -125,6 +147,20 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer',  # Añade el renderer de HTML
+    ],
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
