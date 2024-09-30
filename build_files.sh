@@ -1,2 +1,3 @@
 pip install -r requirements.txt
-python3.9 manage.py collectstatic --noinput
+python MediStore/manage.py migrate
+python MediStore/manage.py collectstatic --noinput
