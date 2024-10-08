@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qmi6m=@2r+ej*fjkqa1_7)$1xwumfx*z7k5%mc1=9e9-$yhg%^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 
 # Application definition
@@ -83,9 +83,31 @@ WSGI_APPLICATION = 'MediStore.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # BASE DE DATOS SQLITE
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    
+    # BASE DE DATOS POSTGRESSQL LOCAL
+    # "default": {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     "NAME": "medi_store",
+    #     "USER": "andersond912",
+    #     "PASSWORD": "admin123",
+    #     "HOST": "127.0.0.1",
+    #     "PORT": "5432",
+    # }
+     "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': 'MC4RwsLqJ1oc',
+        'HOST': 'ep-lingering-waterfall-a46zmsn8-pooler.us-east-1.aws.neon.tech',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
 

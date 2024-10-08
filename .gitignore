@@ -15,3 +15,4 @@ logs/
 *.sqlite3
 #Folders
 assets/
+MediStore/datos.json
